@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar color="mixolo">
+    <ion-title>
+     YOUR EVENT DETAILS
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <img src='{{eventdetails.Event_data.EventImage}}'>
+  <div class='events-content' padding>
+  <h2>{{eventdetails.Event_data.EventName}}</h2>  
+  <span>{{eventdetails.Event_data.TagLine}}</span>
+  <ion-icon name="ios-clock"> {{eventdetails.Event_data.EventDate_Time}} </ion-icon><br>
+  <ion-icon name="ios-pin"> {{eventdetails.Event_data.EventAddress}} {{eventdetails.Event_data.EventCity}} {{eventdetails.Event_data.EventZip}}</ion-icon>
+<div class='block_heading'>
+  ABOUT THE EVENT
+</div>
+{{eventdetails.Event_data.EventDescription}}
+
+<div class='block_heading'>
+  WHAT TO EXPECT
+</div>
+<h3>Food & Beverages</h3>
+{{eventdetails.Event_data.Food_Beverage}}
+  </div> -->
+ 
+  <ion-slides pager="true">
+      <ion-slide *ngFor="let slide of eventDetails.EventImage">
+        <img [src]="slide">
+  </ion-slide>
+</ion-slides> 
+<div padding class="event_details_content">
+<h1>{{eventDetails.title}}</h1> 
+<h6>{{eventDetails.Tagline}}</h6>
+<div class='event_details_para'><ion-icon name="ios-clock-outline"></ion-icon>  {{eventDetails.start_date}} - {{eventDetails.end_date}}  <br>
+<ion-icon name="ios-pin-outline"></ion-icon>  {{eventDetails.biz_Address}}   <span style="float:right;top:10px;position:relative;">{{eventDetails.distance}} miles from you</span>
+</div> 
+
+<button ion-button color="danger" class='buy_tickets' full outline (click)="buyTickets()">BUY TICKETS <span class='ticket_price'>Starting At <br> ${{eventDetails.Ticket_price}}</span></button>
+
+<div class='block_heading'>
+    EVENT DESCRIPTION
+</div>
+  {{eventDetails.EventDescription}}
+</div> <!-- Event Details content ends here -->
+
+<div  class="lightgrey_background event_details_content">
+  <div padding>
+  <div class='block_heading'>
+      ABOUT THE VENUE
+  </div>   
+  {{eventDetails.venue_name}}<br>
+  <div text-center>
+    {{eventDetails.biz_Address}} <br>
+  <div class="social_network_icon">
+      <a href='http://{{eventDetails.Website}}'><ion-icon name="logo-facebook"></ion-icon></a>
+  </div>
+  <div class="social_network_icon" >
+      <a href='http://{{eventDetails.Website}}'><ion-icon name="logo-twitter"></ion-icon></a>  
+  </div>
+  <div class="social_network_icon" >
+      <a href='http://{{eventDetails.Website}}'><ion-icon name="logo-instagram"></ion-icon></a>
+  </div>
+  <!-- <div class="social_network_icon" *ngIf="eventDetails.linkedin==null">
+      <ion-icon name="logo-linkedin"></ion-icon>
+  </div>
+  <div class="social_network_icon" *ngIf="eventDetails.googleplus==null">
+      <ion-icon name="logo-googleplus"></ion-icon>
+  </div>
+  <div class="social_network_icon" *ngIf="eventDetails.whatsapp==null">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+  </div> -->
+  
+<br>
+  <a href='http://{{eventDetails.Website}}'>{{eventDetails.Website}}</a>
+  </div>
+
+
+  <div class='block_heading'>
+     WHAT TO EXPECT
+  </div>
+  <h4>FOOD AND BEVERAGES</h4>
+  <ul style="list-style:circle">
+    <li>{{eventDetails.Food}}</li>
+    <li>{{eventDetails.Beverages}}</li>
+    <span *ngFor="let fd of eventDetails.Food_Beverage">
+    <li *ngIf="fd" >
+        {{fd}}
+    </li>
+    </span>
+    <li *ngIf="eventDetails.other_food_offers">{{eventDetails.other_food_offers}}</li>
+  </ul>
+  <br>
+  <i>*Please Note: Minimum age requirements for mixolo event are generally 18 and over.
+  Attendees under 21 will not be served alcoholic beverages. Please be prepared to show 
+  identification for proof of age.</i>
+  
+  <div class="block_heading" *ngIf="eventDetails.Additional_Notes">
+    ADDITIONAL NOTES FROM THE VENUE
+  </div>
+  {{eventDetails.Additional_Notes}}
+</div>
+  <hr>
+  <div padding color="black"><b>if you have any questions, please refer to our FAQ or send an mail to wecare@mixolo.io</b></div>
+
+</div> <!-- Lightgrey background ends here -->
+
+</ion-content>

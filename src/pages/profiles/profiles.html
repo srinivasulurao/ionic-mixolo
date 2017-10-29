@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="mixolo" hideBackButton="true">
+    <ion-title>
+      PROFILE
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="navigateHelp()" ion-button icon-only><ion-icon name="help-circle"></ion-icon></button>
+    </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img *ngIf="profileDetails.Profile_Image" class='profile_pic' src='{{profileDetails.Profile_Image}}' alt="Loading, please wait...">
+  <img *ngIf="!profileDetails.Profile_Image" class='profile_pic' src='https://www.vccircle.com/wp-content/uploads/2017/03/default-profile.png' alt="Loading, please wait..." >
+
+  <ion-icon name="settings" (click)="navigateSettings()" class="settings_icon"></ion-icon>
+  <div class='events-content' padding>
+  {{profileDetails.First_Name}} {{profileDetails.Last_Name}} <br>
+  <ion-icon name="ios-pin"> {{profileDetails.Location}}</ion-icon>
+  <h4>Interests</h4>
+  <span *ngFor="let pi of profileInterests" style="display:inline-block;margin-right:5px;"> 
+    <ion-badge>{{pi.Interest}}</ion-badge>
+  </span>
+
+  </div>
+</ion-content>

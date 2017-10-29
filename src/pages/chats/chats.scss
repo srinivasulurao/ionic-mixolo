@@ -1,0 +1,27 @@
+.medium{
+    font-size:13px;
+}
+
+.horizontal_chat_list li{
+float:left !important;
+list-style: none !important;
+text-align: center !important;
+margin-left:4px;
+}
+
+.horizontal_chat_list{
+    overflow-x:scroll;
+    overflow-y: hidden; 
+    width:auto !important;
+    white-space:nowrap;
+    height:55px !important;
+    position: relative;
+    margin:0px;
+    padding:0px;
+}
+  
+// .horizontal_chat_list li img{
+//     width:70px !important;
+//     height:70px !important;
+//     border-radius: 50% !important;
+// }

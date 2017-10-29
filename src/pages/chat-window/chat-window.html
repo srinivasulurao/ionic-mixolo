@@ -1,0 +1,29 @@
+<!--
+  Generated template for the ChatWindowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="mixolo">
+    <ion-title>{{chat_user_first_name}} {{chat_user_last_name}}</ion-title>
+    <ion-buttons end>
+        <button (click)="doMore()" ion-button icon-only><ion-icon name="more"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<div class="chat_arena" padding >
+        <div *ngFor="let msg of chatMessages.messages" class="message_{{msg.align}}">{{msg.message}}<br>
+        <span class="small">{{msg.Date}}</span>
+        </div>
+</div>
+
+<div class="chat_shoutbox">
+    <ion-textarea [(ngModel)]="typed_message" name="description"></ion-textarea><button (click)="sendMessage()" class="chat_send_button" ion-button color="mixolo">SEND</button>
+</div>
+</ion-content>

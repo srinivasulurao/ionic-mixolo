@@ -1,0 +1,27 @@
+<!--
+  Generated template for the EventTitlePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="mixolo">
+    <ion-title></ion-title> 
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="host_an_event_page" >
+<h1>Give your event a title</h1>
+  <ion-input [(ngModel)]="event_title"></ion-input>
+  <p>
+    Let's begin here. As you design your event, you see how it will appear to your guests. First, give your
+    event a title that pops. Be descriptive enough to convey what your event is about, but keep it brief enough to catch
+    your guests attention. Have fun with it.
+  </p>
+  <div center text-center style="margin-top:50px" >
+    <button color="danger" (click)="goNext()" ion-button full>SAVE & CONTINUE </button>
+  </div>
+</ion-content>

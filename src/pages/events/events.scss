@@ -1,0 +1,45 @@
+.small{
+    font-size:10px !important;
+}
+
+.eventItem{
+    height:200px;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    color:white;
+}
+
+.eventItem h6{
+    display: inline-block !important;
+    font-size:12px;
+    padding:0px;
+    margin:0px;
+
+}
+
+.event_icon_bar{
+    height:50px;
+    vertical-align: middle;
+    background:white;
+    color:red;
+    font-size:30px !important; 
+    text-align: left;
+}
+
+.event_icon_bar ion-icon{
+    vertical-align: middle;
+    top:4px;
+    position: relative;
+}
+
+.event_icon_bar ion-icon:nth-child(1){
+ margin-left:8%;
+}
+
+.event_icon_bar ion-icon:nth-child(2){
+    margin-left:30%;
+}
+
+.event_icon_bar ion-icon:nth-child(3){
+   margin-left: 30%;
+}

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="mixolo" hideBackButton="true">
+    <ion-title>
+      MY EVENTS
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<div padding>
+  <ion-segment [(ngModel)]="event" >
+    <ion-segment-button value="upcoming">
+      UPCOMING
+    </ion-segment-button>
+    <ion-segment-button value="past_events">
+      PAST EVENTS
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="event">
+  
+  <ion-list *ngSwitchCase="'upcoming'">
+
+      <div *ngFor="let upcoming_event of upcoming_events" >
+          <div padding [style.background-image]="getBackgroundImage(upcoming_event.EventImage[0])" class='eventItem' (click)="navigateEventDetailsPage(upcoming_event)" >
+              <!-- Write all the event Details here -->
+              <h3>{{upcoming_event.title}}</h3> 
+              <h6>{{upcoming_event.Tagline}}<br>
+                  {{upcoming_event.start_date}}<br>
+                  {{(upcoming_event.EventDescription.length>100)? (upcoming_event.EventDescription | slice:0:100)+'...':(upcoming_event.EventDescription)}}<br>
+                  {{upcoming_event.location_address}}<br>
+                  {{upcoming_event.location_address_line_1}}<br>
+                  {{upcoming_event.location_address_line_2}}<br>
+                  {{upcoming_event.biz_Address}} <br>
+                  {{upcoming_event.city}},{{upcoming_event.location_country_code}} {{upcoming_event.location_post_code}} <br>
+                  ({{upcoming_event.distance}} miles from you)
+              </h6>
+          </div>
+          <div class="event_icon_bar">
+            <ion-icon name="ios-time-outline"></ion-icon>
+            <ion-icon name="ios-pin-outline"></ion-icon>
+          </div>
+          </div> <!-- Iteration ends here -->
+  
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'past_events'">
+    <div *ngFor="let past_event of past_events"  >
+      <div padding [style.background-image]="getBackgroundImage(past_event.EventImage[0])" class='eventItem' (click)="navigateEventDetailsPage(past_event)">
+          <!-- Write all the event Details here -->
+          <h3>{{past_event.title}}</h3>
+          <h6>{{past_event.Tagline}}<br>
+              {{past_event.start_date}}<br>
+              {{(past_event.EventDescription.length>100)? (past_event.EventDescription | slice:0:100)+'...':(past_event.EventDescription)}}<br>
+              {{past_event.location_address}}<br>
+              {{past_event.location_address_line_1}}<br>
+              {{past_event.location_address_line_2}}<br>
+              {{past_event.biz_Address}} <br>
+              {{past_event.city}},{{past_event.location_country_code}} {{past_event.location_post_code}} <br>
+              ({{past_event.distance}} miles from you)
+          </h6>
+      </div>
+      <div class="event_icon_bar">
+        <ion-icon name="ios-time-outline"></ion-icon>
+        <ion-icon name="ios-pin-outline"></ion-icon>
+        <ion-icon name="ios-thumbs-up-outline" (click)="navigateLikePage(past_event)"></ion-icon>
+      </div>
+      </div> <!-- Iteration ends here -->
+
+  </ion-list>
+</div>
+</ion-content>

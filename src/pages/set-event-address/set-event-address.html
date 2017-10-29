@@ -1,0 +1,55 @@
+<!--
+  Generated template for the SetDescriptionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+    
+      <ion-navbar color="mixolo">
+        
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content color="mixolo" class="host_an_event_page set_evt_address" padding >
+        <h3 text-center>Identify and offer a brief description of your venue.</h3>
+    <ion-item no-lines><ion-label>Address</ion-label></ion-item>    
+    <ion-item no-lines>
+        <ion-textarea placeholder="Venue Address" style="background:white;border:1px solid lightgrey; height:150px;width:100%" [(ngModel)]="event_venue_address"></ion-textarea><br>
+    </ion-item>
+    
+    <ion-item no-lines><ion-label>City</ion-label></ion-item>    
+    <ion-item no-lines>
+        <ion-select placeholder="Select a city" [(ngModel)]="event_city">
+           <ion-option *ngFor="let city of cityList">{{city}}</ion-option>
+        </ion-select><br>
+    </ion-item>
+     
+    <ion-item no-lines><ion-label>State</ion-label></ion-item>    
+    <ion-item no-lines>
+        <ion-select placeholder="Select a state" [(ngModel)]="event_state">
+            <ion-option *ngFor="let state of stateList">{{state}}</ion-option>
+        </ion-select><br>
+    </ion-item>
+    
+    <ion-item no-lines><ion-label>Zipcode</ion-label></ion-item>    
+    <ion-item no-lines>
+        <ion-input placeholder="Zipcode" [(ngModel)]="event_zipcode"></ion-input>
+    </ion-item>
+    
+    <ion-item no-lines><ion-label>Venue Description</ion-label></ion-item>    
+    <ion-item no-lines>
+        <ion-textarea placeholder="Venue Description" style="background:white;border:1px solid lightgrey; height:150px;width:100%" [(ngModel)]="event_venue_description"></ion-textarea><br>
+    </ion-item>
+    
+    <p>
+      Describe your venue. Convince us that your place of business will make for a fun Mixolo event.
+    </p>
+    
+        <div center text-center>
+    <button ion-button color="danger" (click)="goNext()" full>Save & Continue</button>
+        </div>
+    </ion-content>
+    

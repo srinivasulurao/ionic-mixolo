@@ -1,0 +1,33 @@
+<!--
+  Generated template for the EventTitlePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    
+      <ion-navbar color="mixolo">
+        <ion-title></ion-title> 
+      </ion-navbar>
+    
+</ion-header>
+    
+    
+    <ion-content padding class="host_an_event_page schedule_time" >
+    <h1>Schedule your event</h1>
+      
+    <ion-item>
+        <ion-datetime displayFormat="MM/DD/YYYY h:m A" placeholder="Event Start Date Time" [(ngModel)]="event_start_date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-datetime displayFormat="MM/DD/YYYY h:m A" placeholder="Event End Date Time" [(ngModel)]="event_end_date"></ion-datetime>
+    </ion-item>
+    
+    
+      
+      <div center text-center style="margin-top:50px" >
+        <button color="danger" (click)="goNext()" ion-button full>NEXT</button>
+      </div>
+    </ion-content>
+    

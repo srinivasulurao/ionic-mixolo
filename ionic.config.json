@@ -1,0 +1,9 @@
+{
+  "name": "mixolo",
+  "app_id": "",
+  "type": "ionic-angular",
+  "tabsPlacement": "bottom",
+  "integrations": {
+    "cordova": {}
+  }
+}

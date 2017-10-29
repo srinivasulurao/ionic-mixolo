@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="mixolo" hideBackButton="true">
+    <ion-title>
+      MIX CHAT
+    </ion-title>
+    <ion-buttons end>
+        <button (click)="navigateMultiple()" ion-button icon-only><ion-icon name="people"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ul class="horizontal_chat_list">
+              <li *ngFor="let ul of userList" (click)="startChat(ul.ID,ul.First_Name,ul.Last_Name)">
+                  <ion-avatar *ngIf="ul.Profile_Image"><img src="{{pic_dir}}{{ul.Profile_Image}}" ></ion-avatar>
+                  <ion-avatar *ngIf="!ul.Profile_Image"><img src="https://www.vccircle.com/wp-content/uploads/2017/03/default-profile.png" ></ion-avatar>
+                  <span class="small">{{ul.First_Name|uppercase}}</span>    
+              </li>     
+    </ul>
+</ion-item>
+    <ion-item *ngFor="let user of chatUserList.users" detail-push (click)="startChat(user.id,user.First_Name,user.Last_Name)">
+        <ion-avatar item-left *ngIf="user.Profile_Image">
+          <img src="{{user.Profile_Image}}" >
+        </ion-avatar>
+
+        <ion-avatar item-left *ngIf="!user.Profile_Image">
+            <img src="https://www.vccircle.com/wp-content/uploads/2017/03/default-profile.png" >
+        </ion-avatar>
+
+        <h2>{{user.First_Name|uppercase}} {{user.Last_Name|uppercase}}</h2>
+        <span class="medium">{{user.Last_Message}}</span>
+      </ion-item>
+      
+</ion-content>

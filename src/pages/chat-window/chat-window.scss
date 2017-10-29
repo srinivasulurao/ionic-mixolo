@@ -1,0 +1,52 @@
+page-chat-window {
+
+}
+
+.chat_shoutbox{
+    background:#ccc;
+    padding:10px;
+    margin-top:1%;
+    position:fixed;
+    width:100%;
+}
+
+.chat_shoutbox ion-textarea{
+    border-radius: 10px;
+    border:1px solid white;
+    width:80%;
+    display: inline-block;
+
+}
+
+.chat_send_button{
+    display: inline-block;
+    vertical-align: top;
+    top: 4px;
+    left: 2px;
+}
+
+.message_left{
+    float:left;
+    clear:both;
+    background:skyblue;
+    min-width:30%;
+    border-radius: 4px;
+    padding:5px;
+    margin-bottom:5px;
+}
+
+.message_right{
+    float:right;
+    clear:both;
+    background:lightgrey;
+    min-width: 30%;
+    border-radius: 4px;
+    padding:5px;
+    margin-bottom:5px;
+}
+
+.chat_arena{
+    height:87%;
+    max-height: 87%;
+    overflow-y: scroll;
+}

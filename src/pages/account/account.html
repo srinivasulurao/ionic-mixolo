@@ -1,0 +1,32 @@
+<ion-header >
+        <ion-navbar color="mixolo">
+          <ion-title>
+            ACCOUNT
+          </ion-title>
+        </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+    
+        <ion-item [navPush]="premium" detail-push><ion-label>TRY PREMIUM FOR FREE</ion-label></ion-item>
+        <ion-item ><ion-label>SYNC CALENDER</ion-label><ion-toggle [(ngModel)]="sync_calendar"></ion-toggle> </ion-item>
+        <ion-item detail-push [navPush]="feedback" ><ion-label>FEEDBACK</ion-label></ion-item>
+        <ion-item detail-push [navPush]="notification" ><ion-label>NOTIFICATION</ion-label> </ion-item>
+        <ion-item detail-push (click)="subMenuVisibility()"><ion-label>MIXOLO</ion-label></ion-item>
+
+        <div *ngIf="show" class='child_list'>
+            <ion-item detail-push  [navPush]="about_mixolo"><ion-label>ABOUT MIXOLO</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+            <ion-item  detail-push [navPush]="how_mixolo_works"><ion-label>HOW MIXOLO WORKS</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+            <ion-item  detail-push [navPush]="policies"><ion-label>POLICIES</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+            <ion-item  detail-push [navPush]="help"><ion-label>HELP</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+            <ion-item detail-push  [navPush]="terms_conditions"><ion-label>TERMS AND CONDITIONS</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+            <ion-item detail-push  [navPush]="privacy"><ion-label>PRIVACY</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+            <ion-item detail-push  [navPush]="mix_chat"><ion-label>MIX CHAT</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item>
+        </div>
+
+        <ion-item detail-push (click)="navigateHostEvent()"><ion-label>HOST AN EVENT</ion-label></ion-item>
+
+        <!-- <ion-item [navPush]="host_event" ><ion-label>HOST AN EVENT</ion-label> <ion-icon name="arrow-forward"></ion-icon></ion-item> -->
+        <ion-input type="hidden" [(ngModel)]="show_sub_menu"></ion-input>
+</ion-content>
+

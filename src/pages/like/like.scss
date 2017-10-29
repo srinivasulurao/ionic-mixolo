@@ -1,0 +1,55 @@
+page-like {
+
+}
+
+.likely_recommend{
+    width:100%;
+    margin-top:10px;
+    border:1px solid lightgrey;
+    max-width: 97%;
+    margin-bottom:10px;
+}
+
+.question{
+margin-top:10px;
+}
+
+.friendly_status
+{
+    bottom:10px;
+    position: relative;
+}
+
+
+.item-ios .radio-ios{
+    border:1px solid lightgrey;
+    border-radius:50%;
+    padding:3px 5px;
+    float:left !important;
+}
+
+.question ion-label{
+    float:right;
+}
+
+.question .item-inner, .question .item-block{
+    border:0px !important;
+}
+
+.question ion-textarea{
+    border:1px solid lightgrey;
+    height: 150px;
+    width:95%;
+    margin:5px;
+    padding:5px;
+    padding-top:0px;
+    padding-bottom: 0px;
+}
+
+.rating_validation_message li{
+    text-align: left !important;
+}
+
+.rating_validation_message{
+    float:left !important;
+}

@@ -1,0 +1,73 @@
+<!--
+  Generated template for the FilterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="mixolo">
+    <ion-title>FILTER</ion-title>
+
+    <ion-buttons end>
+        <button (click)="resetFilter()" ion-button >Reset</button>
+    </ion-buttons>
+  
+  </ion-navbar>
+
+  
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label center text-center>Sort By</ion-label><ion-label center text-center>Filter</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label style='padding-left:70px'>Location</ion-label>
+        <ion-select [(ngModel)]="location" >
+          <ion-option value="">All</ion-option>
+           <ion-option  *ngFor="let city of cities" > {{city}} </ion-option>
+        </ion-select>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label style='padding-left:70px'>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" value="01/01/2017" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label style='padding-left:70px'>Interests</ion-label>
+
+        <ion-select [(ngModel)]="interests" multiple="true">
+            <ion-option value="">All</ion-option>
+            <ion-option *ngFor="let il of interestList" value="{{il.ID}}" selected="selected" > {{il.Interest}} </ion-option>
+          </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label style="float:left;display: inline-block;right: 110px;position: relative;">Price</ion-label>
+        <ion-range min="0" max="250" [(ngModel)]="price" color="danger">
+            <ion-label range-left>$0</ion-label>
+            <ion-label range-right>$250+</ion-label>
+          </ion-range>
+    </ion-item>
+
+    <ion-item>
+        <ion-label style="float:left;display: inline-block;right: 55px;position: relative;">Max Distance(Miles)</ion-label>
+        <ion-range min="0" max="100" [(ngModel)]="max_distance" color="danger">
+            <ion-label range-left>$0</ion-label>
+            <ion-label range-right>$100+</ion-label>
+          </ion-range>
+    </ion-item>
+
+  </ion-list>
+
+  <div center text-center>
+    <button ion-button color="danger" (click)="searchFilterEvents()">DONE</button>
+  </div>
+
+</ion-content>

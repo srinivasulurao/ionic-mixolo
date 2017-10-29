@@ -1,0 +1,29 @@
+<ion-header >
+        <ion-navbar color="mixolo">
+          <ion-title>
+            REGISTRATION
+          </ion-title>
+        </ion-navbar>
+    </ion-header>
+    
+<ion-content class='mixolo-background' >
+        <div class='logo-playground' style="margin-top:50px"> 
+         <h1>CREATE YOUR<br>
+          MIXOLO ACCOUNT</h1>
+      <div class='wide-box'>
+          <ion-input type="text" placeholder="First Name" [(ngModel)]="first_name" style="width:49%;display:inline-block"></ion-input>
+          <ion-input type="text" placeholder="Last Name" [(ngModel)]="last_name" style="margin-left:5px;width:48%;display:inline-block"></ion-input>
+          <br><br> 
+          <ion-input type="text" placeholder="Email" [(ngModel)]="email_id"></ion-input><br>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="pwd"></ion-input>
+          <a href='javascript:void(0)' (click)="showPasswordGuidelines()" class='small text' id="guiidelines" style="float:left">Password Guidelines</a><br>
+          <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="conf_pwd"></ion-input><br>
+          <ion-item><ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="dob" placeholder="Date of Birth"></ion-datetime></ion-item><br> 
+          <button ion-button color="danger" (click)="attemptRegistration()">SIGN UP</button><br>
+          <a href="javascript:void(0)" class='small text' id="guiidelines">By Signing Up you agree with our TERMS AND CONDITIONS</a>
+      </div>
+      
+      
+        </div>
+      
+      </ion-content>

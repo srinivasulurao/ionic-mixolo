@@ -1,0 +1,75 @@
+<!--
+  Generated template for the HelpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="mixolo" >
+    <ion-title>HELP</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div padding>
+        <div class='block_heading'>HELP TOPICS</div>
+        <ion-list>
+        <ion-item detail-push no-lines (click)="hideCorresponding('your_account')">YOUR ACCOUNT</ion-item>
+        <div *ngIf="your_account">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
+          ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+           in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+          and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        <ion-item detail-push no-lines (click)="hideCorresponding('communications')">COMMUNICATIONS</ion-item>
+        <div *ngIf="communications">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <ion-item detail-push no-lines (click)="hideCorresponding('community_engagement')">COMMUNITY ENGAGEMENT</ion-item>
+        <div *ngIf="community_engagement">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <ion-item detail-push no-lines (click)="hideCorresponding('trust_safety')">TRUST AND SAFETY</ion-item>
+        <div *ngIf="trust_safety">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <ion-item detail-push no-lines (click)="hideCorresponding('fees_and_payments')" >FEES AND PAYMENTS</ion-item>
+        <div *ngIf="fees_and_payments">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <ion-item detail-push no-lines (click)="hideCorresponding('cancellations_refunds')" >CANCELLATIONS AND REFUNDS</ion-item>
+        <div *ngIf="cancellations_refunds"  >
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <ion-item detail-push no-lines (click)="hideCorresponding('legal')">LEGAL</ion-item>
+        <div *ngIf="legal" >
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+      </ion-list>
+    </div>
+ 
+
+
+<div padding style="background:lightgrey">
+<div class='block_heading'>FAQs</div>
+<div *ngFor="let faq of faqs" >
+
+  <h6 style="margin-top:20px">{{faq.Question}} </h6>
+  {{faq.Answer}}
+
+
+</div>
+</div>
+
+<div padding center text-center>
+  <div class="block_heading">CUSTOMER CARE</div>
+  Still have questions?<br>
+  <div style="width:42%;text-align:left;margin:auto" >
+    <ion-icon name="ios-mail-outline" color="primary"> wecare@mixolo.io</ion-icon><br>
+    <ion-icon name="ios-mail-outline"> (301)583-7237     </ion-icon>
+  </div>
+</div>
+</ion-content>

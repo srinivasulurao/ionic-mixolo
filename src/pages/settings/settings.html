@@ -1,0 +1,64 @@
+<ion-header >
+    <ion-navbar color="mixolo" hideBackButton="true">
+            <ion-buttons start>
+                    <button (click)="navigateProfile()" ion-button icon-only><ion-icon name="arrow-back"></ion-icon></button>
+                </ion-buttons>
+      <ion-title>
+        SETTINGS
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content>
+    <div style="display:inline-block;width:30%;height:130px;" (click)="changeProfileImage()">
+        <img *ngIf="profileDetails.Profile_Image"  style='height:100%;width:100%' src='{{profileDetails.Profile_Image}}' alt="Loading, please wait..." >
+        <img *ngIf="!profileDetails.Profile_Image" style='height:100%;width:100%' src='https://www.vccircle.com/wp-content/uploads/2017/03/default-profile.png' alt="Loading, please wait..." >
+        
+</div>    
+
+    <div style="display:inline-block;width:68%;vertical-align:top">
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="first_name"></ion-input>
+        </ion-item>
+        <ion-item>
+                <ion-input type="text" [(ngModel)]="last_name"></ion-input>
+        </ion-item> 
+        <ion-item>
+                <ion-input type="text" [(ngModel)]="user_email"></ion-input>
+        </ion-item>
+    </div> 
+    <div style='float:right'><button class='password_reset_button' ion-button color="danger" [navPush]="CPPP">PASSWORD RESET</button></div>
+
+
+    <div style="display:block;width:98%;margin:auto;margin-top:15%">
+                <ion-item>
+                                <!-- <span *ngFor="let pi of profileInterests" style="display:inline-block;margin-right:5px;"> 
+                                                {{pi.Interest}}
+                                </span> -->
+                                <!-- <ion-label>Interest</ion-label> -->
+                                <ion-select [(ngModel)]="interests" multiple="true" style="width:100%;max-width:100%" >
+                                        <ion-option  *ngFor="let il of interestList" value="{{il.ID}}" selected="{{il.selected}}"> {{il.Interest}} </ion-option>
+                                        
+                                </ion-select>
+                </ion-item>
+            <ion-item>
+                <ion-input type="text" [(ngModel)]="location"></ion-input>
+            </ion-item>
+            <ion-item>
+                    <ion-label>SHARE PROFILE</ion-label>
+                    <ion-toggle [(ngModel)]="public_profile"></ion-toggle> 
+            </ion-item> 
+            <ion-item detail-push>
+                    <ion-label (click)="navigateAccount()">ACCOUNT</ion-label>
+            </ion-item>        
+    </div>
+
+        <div class='submit_area' >
+
+          <button color="mixolo" ion-button full  (click)="updateProfile()">UPDATE PROFILE</button><br>
+          <button color="mixolo" ion-button full  (click)="attemptLogout()">LOG OUT</button><br>
+          <a href='javascript:void(0)' (click)="deactivateAccount()">DEACTIVATE ACCOUNT</a>
+
+        </div>
+
+</ion-content>

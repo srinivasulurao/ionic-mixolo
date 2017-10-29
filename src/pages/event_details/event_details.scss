@@ -1,0 +1,65 @@
+.block_heading{
+        border: 1px solid grey;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+ion-slides{
+    height:200px;
+    padding:0px;
+}
+
+  ion-slide img {
+    height: 200px !important;
+    width: 100% !important;
+  }
+
+  .event_details_para{
+  font-size: 13px;
+  }
+
+  .event_details_para ion-icon{
+    font-size: 25px;
+    top:3px;
+    position: relative;
+    margin-right:5px;
+    width:20px;
+  }
+
+  .lightgrey_background{
+    background:lightgrey !important;
+  }
+
+  .event_details_content .social_network_icon{
+    display: inline-block !important;
+    font-size:40px; 
+    margin:7px; 
+    color:#93BCC5 !important;
+  }
+  .event_details_content a{
+    color:#93BCC5 !important;
+  }
+  .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{
+    background:white;
+  }
+
+  .swiper-pagination-bullet-active{
+    background:red !important;
+  }
+
+  .buy_tickets{
+    background: #CC1732;
+    color: white;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px !important;
+  }
+
+  .ticket_price{
+    font-size:12px;
+    left:24%;
+    position: relative;
+  }

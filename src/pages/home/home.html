@@ -1,0 +1,24 @@
+<ion-content class='mixolo-background' >
+  <div class='logo-playground'>
+    <img style='width:80%' src='assets/icon/logo-transparent.png'><br>
+    <a href='javascript:void(0)' ><img src='assets/icon/get-solo.png'></a>
+
+    <h3>LOG IN:</h3>
+  </div>
+  
+  <div class='login-options-div' ng-app="mixolo" ng-controller="mixoloLoginOptions">
+    <ul class='loginOptionsList'>
+      <li *ngFor="let lo of items">
+        <a href='javascript:void(0)' (click)="navigate(lo.redirection)" ><img src="{{lo.icon}}"> <span class='login-list-text'>{{lo.name }}</span></a>
+      </li>
+    </ul>
+  </div>
+
+  
+</ion-content>
+
+
+
+
+
+

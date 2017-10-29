@@ -1,0 +1,18 @@
+.settings_icon{
+    float: right;
+    right: 30px;
+    position: relative;
+    top: 10px;
+    font-size: 35px;
+}
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important; 
+}
+
+.profile_pic{
+    height:80% !important;
+    width:100% !important;
+}

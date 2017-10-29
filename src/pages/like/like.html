@@ -1,0 +1,79 @@
+<!--
+  Generated template for the LikePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="mixolo">
+    <ion-title>Rate Event</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div padding [style.background-image]="getBackgroundImage(eventDetails.EventImage[0])" class='eventItem'>
+      <h4>{{eventDetails.title}}</h4>
+      <h5>{{eventDetails.Tagline}}</h5>
+      <h5>{{eventDetails.start_date}}</h5>
+      <h5>{{eventDetails.location_address}}</h5>
+</div>
+<div padding>
+<div class='question'>
+  How likely is that you would recommend {{eventDetails.Organiser_name}} to a friend or collegue?<br>
+  <ion-range min="0" max="5" step="1" snaps="true"  color="danger" (ionChange)="rangeSliderChange()" [(ngModel)]="likely_recommend"></ion-range>
+  <span class="friendly_status">{{this.likelyStatus}}</span>
+</div>
+<div class="question">
+  How friendly was the staff at {{eventDetails.Organiser_name}} ? <br>
+  <ion-item style="border:0px;">
+  <ion-select [(ngModel)]="how_friendly" class='likely_recommend' >
+    <ion-option value="" >SELECT</ion-option>
+    <ion-option value="Extremely Likely" >Extremely Likely</ion-option>
+    <ion-option value="Very Likey" >Very Likely</ion-option>
+    <ion-option value="Somewhat Likey" >Somewhat Likely</ion-option>
+    <ion-option value="Not Likey" >Not Likely</ion-option>
+    <ion-option value="Not a chance" >Not a chance</ion-option>
+  </ion-select>
+</ion-item>
+</div>
+
+<div class="question">
+Would attend another event hosted by {{eventDetails.Organiser_name}}? 
+<ion-list radio-group [(ngModel)]="attend_another">
+<ion-item> <ion-radio  value="yes"></ion-radio>  <ion-label>Yes</ion-label> </ion-item>
+<ion-item> <ion-radio  value="no"></ion-radio>   <ion-label>No</ion-label>  </ion-item>
+<ion-item> <ion-radio  value="may be"></ion-radio>  <ion-label>May be</ion-label> </ion-item>
+</ion-list>
+</div>
+
+<div class="question">
+    Overall how would you rate the event?
+    <ion-item style="border:0px;">
+        <ion-select [(ngModel)]="rate" class='likely_recommend' >
+          <ion-option value="" >GIVE RATING</ion-option>
+          <ion-option value="1">1 Star</ion-option>
+          <ion-option value="2">2 Star</ion-option>
+          <ion-option value="3">3 Star</ion-option>
+          <ion-option value="4">4 Star</ion-option>
+          <ion-option value="5">5 Star</ion-option>
+        </ion-select>
+      </ion-item>
+</div>
+
+<div class="question">
+Do you have any additional comments on the venue or event?
+<ion-textarea [(ngModel)]="comments"></ion-textarea>
+
+</div>
+  
+<div center text-center>
+<button ion-button color="danger" (click)="submitRating()">SUBMIT</button>
+</div>
+
+
+
+</div>
+</ion-content>

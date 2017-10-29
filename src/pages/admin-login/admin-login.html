@@ -1,0 +1,23 @@
+<ion-content class='mixolo-background' >
+  <div class='logo-playground'>
+    <img style='width:80%' src='assets/icon/logo-transparent.png'><br>
+    <!-- <button ion-button color="danger">Go Solo</button> -->
+    <a href='javascript:void(0)' ><img src='assets/icon/get-solo.png'></a>
+    <br><br>
+<div class='login-box'>
+    <ion-input type="text" placeholder="Email" [(ngModel)]="admin_email"></ion-input><br>
+    <ion-input type="password" placeholder="Password" [(ngModel)]="admin_password"></ion-input><br>
+<a href='javascript:void(0)' style="float:right;color:white;text-decoration:none" [navPush]="forgotPassword">Forgot Password?</a><br><br>
+    <button ion-button color="danger" (click)="attemptAdminLogin()">LOG IN</button>
+</div>
+
+
+  </div>
+
+</ion-content>
+
+
+
+
+
+
