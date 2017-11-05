@@ -25,6 +25,9 @@ export class AdminLoginPage {
     private mixoloEvents:MixoloEventService,
     public alertCtrl: AlertController,
     public loader: LoadingController) {
+
+      this['admin_email']="elozano@appddictionstudio.com";
+      this['admin_password']="testing";
  
    }
 
@@ -68,7 +71,17 @@ export class AdminLoginPage {
             localStorage.setItem('admin_user_id',response.user.user_id);
             this.navCtrl.push(ThanksAdminPage);
           }
-     });
+     },
+    error=>{
+      instance.loaderCtrl.dismiss();
+      let alert = this.alertCtrl.create({
+        title: 'Login Failed',
+        subTitle: error,
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
+    );
 
 
   }

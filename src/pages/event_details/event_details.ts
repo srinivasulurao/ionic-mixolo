@@ -65,12 +65,21 @@ export class EventDetailsPage {
       placeholder:"Enter here !"
     });
 
+    alert.addInput({
+      type: 'number',
+      name: 'quantity',
+      value: '1',
+      min:'1',
+      placeholder:"Enter Quantity !"
+    });
+
     alert.addButton('CLOSE');
 
     alert.addButton({
       text: 'SEND',
       handler: data => {
-        this.navCtrl.push(PaypalPage,{event_details:this.eventDetails,paypal_text:data});
+        console.log(data);
+        this.navCtrl.push(PaypalPage,{event_details:this.eventDetails,paypal_text:data.paypal_text,quantity:data.quantity});
       }
     });
   

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { MixoloEventService} from '../../app/services/mixolo.events.service';
 import { EventDetailsPage} from '../event_details/event_details';
+import { AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the PaypalPage page.
@@ -20,14 +21,17 @@ export class PaypalPage {
   public paypalText:any;
   public paypalStatusText:any;
   public payment_complete:any;
+  public paypalQty:any;
+  public ticket_price_total:any;
 
   payment: PayPalPayment = new PayPalPayment('10.10', 'USD', 'TV', 'sale');
   currencies = ['EUR', 'USD'];
   payPalEnvironment: string = 'payPalEnvironmentSandbox';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public mixoloEvents:MixoloEventService) {
+  constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, private payPal: PayPal, public mixoloEvents:MixoloEventService) {
     this.eventDetails=navParams.get("event_details"); 
     this.paypalText=navParams.get('paypal_text');
+    this.paypalQty=parseInt(navParams.get('quantity'));
     this.payment_complete=0;
 
   
@@ -42,7 +46,9 @@ export class PaypalPage {
       // Only needed if you get an "Internal Service Error" after PayPal login!
       //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
     })).then(() => {
-      let payment = new PayPalPayment(this.eventDetails.Ticket_price, 'USD',this.eventDetails.title, 'sale');
+      this.paypalQty=(this.paypalQty)?this.paypalQty:1; //Minimum quanity should be 1
+      this.ticket_price_total=parseInt(this.paypalQty)*(this.eventDetails.Ticket_price);
+      let payment = new PayPalPayment(this.ticket_price_total, 'USD',this.eventDetails.title, 'sale');
       this.payPal.renderSinglePaymentUI(payment).then((response) => {
 
           console.log(response);
@@ -90,15 +96,42 @@ paymentSuccess(payment_details){
   var ticket_id=this.eventDetails.Tax_ID;
   var transaction_id=payment_details.response.id;
   var success_payment=(payment_details.response.state=="approved")?1:0;
-  var order_total_amount=this.eventDetails.Ticket_price;
+  var order_total_amount=this.ticket_price_total;
   var message=this.paypalText.paypal_text;
-  var total_ticket_quantity=1;
+  var total_ticket_quantity=this.paypalQty;
   var booking_fee=0;
   var organiser_booking_fee=0;
 
   this.mixoloEvents.appCheckoutSuccess(event_id,app_user_id,ticket_id,transaction_id,success_payment,order_total_amount,total_ticket_quantity,booking_fee,organiser_booking_fee,message).subscribe(response=>{
    
    console.log(response);
+   if(response.status=="success"){
+      let alert = this.alertCtrl.create({
+        title: 'Success !',
+        subTitle: "Payment recieved successfully !",
+        buttons: ['Dismiss']
+      });
+
+      alert.present();
+   }
+   else{
+      let alert = this.alertCtrl.create({
+        title: 'Failed !',
+        subTitle: "Payment Failed, Please try again later !",
+        buttons: ['Dismiss']
+      });
+
+      alert.present();
+   }
+},
+error=>{
+    let alert = this.alertCtrl.create({
+      title: 'Failed !',
+      subTitle: error,
+      buttons: ['Dismiss']
+    });
+
+    alert.present();
 });
 
 }

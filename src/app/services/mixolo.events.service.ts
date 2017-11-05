@@ -263,7 +263,7 @@ export class MixoloEventService{
 
     createEvent(){
         
-        var wu=this.baseUrl+"attendize/public/api/addEvent";
+        var wu=this.baseUrl+"attendize/public/api/addEventIonic";
         var food_beverage_obj=[];
         if(localStorage.getItem('event_fd_1'))
            food_beverage_obj.push("Catered by someone else");

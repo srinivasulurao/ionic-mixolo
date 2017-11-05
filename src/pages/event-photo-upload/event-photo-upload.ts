@@ -3,7 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { File } from '@ionic-native/file';
 import { AlertController } from 'ionic-angular';
+import { LoadingController} from "ionic-angular";
 import { GuestOfferingPage } from '../guest-offering/guest-offering';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
 /**
  * Generated class for the EventPhoneUploadPage page.
  *
@@ -22,13 +25,36 @@ export class EventPhotoUploadPage {
  public image_three:any;
  public image_four:any;
  public image_five:any;
+ public loaderCtrl:any;
 
-  constructor(private alertCtrl:AlertController,private file: File,private imagePicker: ImagePicker, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private transfer: FileTransfer, public loader:LoadingController,private alertCtrl:AlertController,private file: File,private imagePicker: ImagePicker, public navCtrl: NavController, public navParams: NavParams) {
     this.image_one="";
     this.image_two="";
     this.image_three="";
     this.image_four="";
     this.image_five="";
+
+  }
+
+  removePic(pic_no){
+    var pn=parseInt(pic_no);
+    
+    if(pn==1){
+      this.image_one="";
+    }
+    if(pn==2){
+      this.image_two="";
+    }
+    if(pn==3){
+      this.image_three="";
+    }
+    if(pn==4){
+      this.image_four="";
+    }
+    if(pn==5){
+      this.image_five="";
+    }
+
   }
 
   addCameraImage(){
@@ -57,20 +83,6 @@ export class EventPhotoUploadPage {
             this.image_five=results[i];
             return false; 
         }
-
-        // this.file.readAsBinaryString(results[i],results[i]).then(response=>{
-        //     if(this.image_one=="" || this.image_one==null)
-        //        this.image_one=response;
-        //     if(this.image_two=="" || this.image_two==null)
-        //        this.image_two=response;
-        //     if(this.image_three=="" || this.image_three==null)
-        //        this.image_three=response;
-        //     if(this.image_four=="" || this.image_four==null)
-        //        this.image_four=response;
-        //     if(this.image_five=="" || this.image_five==null)
-        //        this.image_five=response;
-            
-        // });
        
       }
     }, (err) => { });
@@ -79,7 +91,15 @@ export class EventPhotoUploadPage {
 
 
   goNext(){
-       if(this.image_one==""){
+    
+    localStorage.setItem('event_image_one',"");
+    localStorage.setItem('event_image_two',"");
+    localStorage.setItem('event_image_three',"");
+    localStorage.setItem('event_image_four',"");
+    localStorage.setItem('event_image_five',"");
+    
+    
+       if(this.image_one=="" && this.image_two=="" && this.image_three=="" && this.image_four=="" && this.image_five==""){
             let alert = this.alertCtrl.create({
               title: 'Operation Failed',
               subTitle: 'Please select atleast one image !',
@@ -88,14 +108,67 @@ export class EventPhotoUploadPage {
             alert.present();
        }
        else{
-         localStorage.setItem('event_image_one',this.image_one);
-         localStorage.setItem('event_image_two',this.image_two);
-         localStorage.setItem('event_image_three',this.image_three);
-         localStorage.setItem('event_image_four',this.image_four);
-         localStorage.setItem('event_image_five',this.image_five);
 
-         this.navCtrl.push(GuestOfferingPage);
+        this.loaderCtrl=this.loader.create({
+          content: 'Uploading Images ...'
+        }); 
+    
+        this.loaderCtrl.present();
+        
+        //Upload the images
+        if(this.image_one)
+          this.uploadImages(this.image_one,1);
+        if(this.image_two)
+          this.uploadImages(this.image_two,2);
+        if(this.image_three)
+          this.uploadImages(this.image_three,3);
+        if(this.image_four)
+          this.uploadImages(this.image_four,4);
+        if(this.image_five)
+          this.uploadImages(this.image_five,5);
+
+        this.loaderCtrl.dismiss();
+        this.navCtrl.push(GuestOfferingPage);
+
        }
+  }
+
+  
+
+
+  uploadImages(img,count){
+   
+    var rand=Math.random();
+    rand=parseInt(rand.toString());
+    var image_file_name=(rand*100000000);
+    let option: FileUploadOptions = {
+      fileKey:'event_photo',
+      mimeType:'multipart/form-data', 
+      httpMethod:'POST',
+      fileName:image_file_name+".png",
+      params : {'action':'update_event_photo'}
+    };
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    console.log(img);
+    fileTransfer.upload(img,atob("aHR0cDovL2FwcGRkaWN0aW9uc3R1ZGlvLmNvbS9taXhvbG8v")+"attendize/public/api/addEventImage",option).then((result)=>{
+      if(result.responseCode==200){
+        console.log(result);
+        if(count==1)
+          localStorage.setItem('event_image_one',result.response);
+        if(count==2)
+          localStorage.setItem('event_image_two',result.response);
+        if(count==3)
+          localStorage.setItem('event_image_three',result.response);
+        if(count==4)
+          localStorage.setItem('event_image_four',result.response);
+        if(count==5)
+          localStorage.setItem('event_image_five',result.response); 
+        
+      }
+      },function(error)
+              {
+      
+              });
   }
 
 } //Class Ends here

@@ -18,38 +18,55 @@
 <p>Add photos to highlight and promote your venue and experience. You may include your business logo, if applicable.</p>
 <button ion-button color="light" (click)="addCameraImage()"> <ion-icon ios="ios-camera" md="md-camera"> </ion-icon> &nbsp; Choose Photo</button>
 <br>
-<ion-grid>
+<ion-grid class='grid_image' text-center>
   <ion-row>
     <ion-col>
-      <img src='{{image_one}}'>
+      <img *ngIf='image_one' src='{{image_one}}'>
+      <img *ngIf="!image_one" src='http://p14.zdassets.com/hc/settings_assets/22351/200346488/uo8R0gKU9NpWsARK2JzPnQ-zoomin_cam_logo.png'>
+      <br>
+      <ion-badge color="danger" (click)="removePic(1)">Remove</ion-badge>
     </ion-col>
     <ion-col>
-      <img src='{{image_two}}'>
+      <img *ngIf='image_two' src='{{image_two}}'>
+      <img *ngIf="!image_two" src='http://p14.zdassets.com/hc/settings_assets/22351/200346488/uo8R0gKU9NpWsARK2JzPnQ-zoomin_cam_logo.png'>
+      <br>
+      <ion-badge color="danger" (click)="removePic(2)">Remove</ion-badge>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col>
-      <img src='{{image_three}}'>
+      <img *ngIf='image_three' src='{{image_three}}'>
+      <img *ngIf="!image_three" src='http://p14.zdassets.com/hc/settings_assets/22351/200346488/uo8R0gKU9NpWsARK2JzPnQ-zoomin_cam_logo.png'>
+      <br>
+      <ion-badge color="danger" (click)="removePic(3)">Remove</ion-badge>
     </ion-col>
     <ion-col>
-      <img src='{{image_four}}'>
+      <img *ngIf='image_four' src='{{image_four}}'>
+      <img *ngIf="!image_four" src='http://p14.zdassets.com/hc/settings_assets/22351/200346488/uo8R0gKU9NpWsARK2JzPnQ-zoomin_cam_logo.png'>
+      <br>
+      <ion-badge color="danger" (click)="removePic(4)">Remove</ion-badge>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col>
-      <img src='{{image_five}}'>
+      <img *ngIf='image_five' src='{{image_five}}'>
+      <img *ngIf="!image_five" src='http://p14.zdassets.com/hc/settings_assets/22351/200346488/uo8R0gKU9NpWsARK2JzPnQ-zoomin_cam_logo.png'>
+      <br>
+      <ion-badge color="danger" (click)="removePic(5)">Remove</ion-badge>
     </ion-col>
+
     <ion-col>
-      
+      <!-- Empty column -->
     </ion-col>
   </ion-row>
-</ion-grid>
+</ion-grid> 
 
 
 <div center text-center>
-
   <button ion-button color="danger" full (click)="goNext()" >NEXT</button>
 </div>
+
+
 </ion-content>

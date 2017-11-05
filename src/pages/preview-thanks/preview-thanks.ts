@@ -27,7 +27,7 @@ export class PreviewThanksPage {
   goNext(){
 
     this.loaderCtrl=this.loader.create({
-      content: 'Registering Account ...'
+      content: 'Adding Event ...'
     });
     this.loaderCtrl.present();
     this.mixoloEvents.createEvent().subscribe(response=>{

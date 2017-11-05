@@ -68,7 +68,7 @@ import { TwitterLoginPage } from '../pages/twitter-login/twitter-login';
 })
 export class MyApp {
 
-  rootPage: any = HomePage; 
+  rootPage: any =HomePage;  
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
